@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uiapp/register.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -8,6 +9,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController rollno=TextEditingController();
+  TextEditingController pass=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +33,7 @@ class _LoginState extends State<Login> {
               height: 30,
             ),
             TextField(
+              controller: rollno,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -46,6 +51,7 @@ class _LoginState extends State<Login> {
               height: 10,
             ),
             TextField(
+              controller: pass,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -82,11 +88,21 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 40,
             ),
-            Text(
-              'Dont have an account ?Register ',
-              style: TextStyle(
-                color: Colors.white54,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Dont have an account ?',
+                  style: TextStyle(
+                    color: Colors.white54,
+                  ),
+                ),
+                TextButton(onPressed: (){
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Register()));
+                },
+                    child: Text('Register')),
+              ],
             ),
           ],
         ),
