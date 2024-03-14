@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:uiapp/profile.dart';
 class QrPage extends StatelessWidget {
   const QrPage({Key? key}) : super(key: key);
 
@@ -29,7 +30,7 @@ class QrPage extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder:(context) => const QrPage()));
+                    MaterialPageRoute(builder:(context) => const Profile()));
               },
               child: Text(
                 'Scan',

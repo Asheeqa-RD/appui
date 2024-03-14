@@ -37,15 +37,15 @@ class _RegisterState extends State<Register> {
 
             SizedBox(height: 30,),
 
-            TextFeild(control: name,
-                title: 'enter your name'),
+            TextFeild(control: rollno,
+                title: 'enter your rollno'),
 
             SizedBox(height: 30,),
-            TextFeild(control: name,
-                title: 'enter your name'),
+            TextFeild(control: email,
+                title: 'enter your email'),
             SizedBox(height: 30,),
-            TextFeild(control: name,
-                title: 'enter your name'),
+            TextFeild(control: password,
+                title: 'enter your password'),
             SizedBox(height: 30,),
             TextButton(
               onPressed: () {
