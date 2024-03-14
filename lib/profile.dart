@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -13,16 +14,19 @@ class _ProfileState extends State<Profile> {
       backgroundColor: Colors.teal,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            CircleAvatar(backgroundImage: NetworkImage('https://www.cyberark.com/wp-content/uploads/2019/11/Developer.jpg'),radius:60,
             ),
-            Text('Alex Robert',
+            Text(
+              'Alex Robert',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 40,
               ),
             ),
-            Text('flutter developer',
+            Text(
+              'flutter developer',
               style: TextStyle(
                 color: Colors.grey,
               ),
@@ -32,52 +36,48 @@ class _ProfileState extends State<Profile> {
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
-                  Icon(Icons.email,
-                    color:Colors.teal ,
+                  Icon(
+                    Icons.email,
+                    color: Colors.teal,
                   ),
-                  SizedBox(width: 10,),
-                  Text('ashdfh@gmail.com',
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'ashdfh@gmail.com',
                     style: TextStyle(
                       color: Colors.blue,
                     ),
                   ),
                 ],
-
               ),
               decoration: const BoxDecoration(color: Colors.white),
-
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.symmetric(horizontal: 20),
-
               child: Row(
                 children: [
-                  Icon(Icons.phone,
-                    color:Colors.teal ,
+                  Icon(
+                    Icons.phone,
+                    color: Colors.teal,
                   ),
-                  SizedBox(width: 10,),
-                  Text('4567468275625',
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    '4567468275625',
                     style: TextStyle(
                       color: Colors.blue,
                     ),
                   ),
                 ],
-
               ),
               decoration: const BoxDecoration(color: Colors.white),
-
             ),
-
-
-
-
-
-
-
-
-
           ],
         ),
       ),

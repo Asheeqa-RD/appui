@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class TextFeild extends StatelessWidget {
-  const TextFeild({Key? key, required this.control, required this.title}) : super(key: key);
-  final TextEditingController control;
+  TextFeild({Key? key,  this.control, required this.title}) : super(key: key);
+    final TextEditingController? control;
    final String title;
 
 
