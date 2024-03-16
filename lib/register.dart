@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:uiapp/loginpage.dart';
 import 'package:uiapp/qrpage.dart';
 import 'package:uiapp/textfield.dart';
 
@@ -23,7 +24,7 @@ class _RegisterState extends State<Register> {
   String remail = '';
   String rpassword = '';
   void register() async {
-    Uri uri = Uri.parse(' https://scnner-web.onrender.com/api/register');
+    Uri uri = Uri.parse('https://scnner-web.onrender.com/api/register');
     var response = await http.post(uri,
         headers: <String, String>{
           'Content-Type': 'application/json;charset=UTF-8'
@@ -34,7 +35,19 @@ class _RegisterState extends State<Register> {
           "password": password.text,
           "rollno":rollno.text,
         }));
-    print('success');
+    print(response.statusCode);
+    print(response.body);
+    var data=jsonDecode(response.body);
+    print(data ['message']);
+    if (response.statusCode==200){
+     Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const Login()));
+
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(data ['message'])));
+
+    }
+
     rname = name.text;
     rnumber = rollno.text;
     remail = email.text;
@@ -80,8 +93,8 @@ class _RegisterState extends State<Register> {
             TextButton(
               onPressed: () {
                 register();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const QrPage()));
+               // Navigator.push(context,
+                  //  MaterialPageRoute(builder: (context) => const QrPage()));
               },
               child: Text(
                 'Register',
