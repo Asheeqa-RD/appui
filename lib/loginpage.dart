@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:uiapp/qrpage.dart';
 import 'package:uiapp/register.dart';
+import 'package:uiapp/scanpage.dart';
+
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -11,6 +17,24 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController rollno=TextEditingController();
   TextEditingController pass=TextEditingController();
+
+  Future<void> login()async{
+    Uri uri = Uri.parse('https://scnner-web.onrender.com/api/login');
+    var response = await http.post(uri,
+        headers: <String, String>{
+        'Content-Type': 'application/json;charset=UTF-8'
+        },
+
+        body:jsonEncode({
+      "rollno":rollno.text,
+      "password":pass.text,
+    }));
+    var decoder=jsonDecode(response.body);
+    print(decoder ['message']);
+    if (response.statusCode==200){
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const QrPage()));
+  }}
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +93,9 @@ class _LoginState extends State<Login> {
               height: 20,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                login();
+              },
               child: Text(
                 'Login',
                 style: TextStyle(
@@ -98,7 +124,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 TextButton(onPressed: (){
-                  Navigator.push(context,
+                 Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const Register()));
                 },
                     child: Text('Register')),
