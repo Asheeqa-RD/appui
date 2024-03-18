@@ -30,11 +30,13 @@ class _LoginState extends State<Login> {
       "password":pass.text,
     }));
     var decoder=jsonDecode(response.body);
-    print(decoder ['message']);
     if (response.statusCode==200){
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const QrPage()));
-  }}
+  }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('new user?Register !')));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
